@@ -8,12 +8,7 @@ export const changeValue = (newValue) => ({
   payload: newValue
 });
 
-export const changeSelection = (newSelection) => ({
+export const changeSelection = (checkboxName, isChecked) => ({
   type: Actions.CHANGE_SELECTION,
-  payload: newSelection
+  payload: { checkboxName, isChecked }
 });
-
-const a = {
-  stored_value: 'abc',
-  stored_selection: { one: true, two: false, three: false, four: true, five: false }
-};

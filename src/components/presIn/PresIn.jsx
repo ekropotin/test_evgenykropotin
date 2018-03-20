@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const checkBoxNames = ['one', 'two', 'three', 'four', 'five'];
+import { checkBoxNames } from 'data';
 
 export const PresIn = (props) => {
   function handleValueChange (e) {
@@ -9,13 +9,11 @@ export const PresIn = (props) => {
   }
 
   function handleCheckboxChange (e) {
-    const param = {};
-    param[e.target.id] = e.target.checked;
-    props.changeSelection(param);
+    props.changeSelection(e.target.id, e.target.checked);
   }
 
   function isChecked (checkBoxName) {
-    return !!props.selection[checkBoxName];
+    return props.selection.includes(checkBoxName);
   }
 
   return (
@@ -26,7 +24,8 @@ export const PresIn = (props) => {
 
         <div key={checkboxName} className='checkbox'>
           <label>
-            <input id={checkboxName} type='checkbox' checked={isChecked(checkboxName)} onChange={handleCheckboxChange} />
+            <input id={checkboxName} type='checkbox' checked={isChecked(checkboxName)}
+              onChange={handleCheckboxChange} />
             {checkboxName}
           </label>
         </div>

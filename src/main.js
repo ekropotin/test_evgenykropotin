@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from './store/createStore';
 import { AppContainer } from 'react-hot-loader';
+import { HashRouter } from 'react-router-dom';
+
+import { createStore } from './store/createStore';
 
 import './styles/main.scss';
 
@@ -18,7 +20,9 @@ let render = () => {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
-        <PageLayout />
+        <HashRouter>
+          <PageLayout />
+        </HashRouter>
       </Provider>
     </AppContainer>,
 

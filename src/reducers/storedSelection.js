@@ -1,11 +1,22 @@
 import { Actions } from 'actions';
 
-const defaultState = { one: false, two: false, three: false, four: false, five: false };
+const defaultState = [];
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [Actions.CHANGE_SELECTION]: (state, action) => ({ ...state, ...action.payload })
+  [Actions.CHANGE_SELECTION]: (state, action) => {
+    const { checkboxName, isChecked } = action.payload;
+    if (isChecked) {
+      if (!state.includes(checkboxName)) {
+        state.push(checkboxName);
+        return state.slice();
+      }
+    } else {
+      return state.filter(item => item !== checkboxName);
+    }
+    return state;
+  }
 };
 
 // ------------------------------------
